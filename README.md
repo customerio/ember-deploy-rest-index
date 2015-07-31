@@ -21,7 +21,7 @@ The adapter implements the following commands as per the `ember-cli-deploy` inte
   HTTP POST http://leojh.com/api/ember-revisions
   {
     "id": 'ember-app:9c0568d',
-    "indexHtml": '<html>...</html>'
+    "body": '<html>...</html>'
   }
   ```
 
@@ -35,8 +35,8 @@ The adapter implements the following commands as per the `ember-cli-deploy` inte
   ```js
   HTTP OK
   [
-    {"id":"ember-app:1bdc67a","createdOn":"2015-06-19T09:58:00-04:00"},
-    {"id":"ember-app:2251eda","createdOn":"2015-06-22T10:51:00-04:00"}
+    {"id":"ember-app:1bdc67a","created_at":"2015-06-19T09:58:00-04:00"},
+    {"id":"ember-app:2251eda","created_at":"2015-06-22T10:51:00-04:00","current":true}
     ...
   ]
   ```
@@ -53,17 +53,15 @@ Sample config in your deploy.js file:
 ```js
 store: {
   type: 'REST',
-  serviceHost: 'http://leojh.com',
-  serviceNamespace: 'api',
-  serviceIndexVersionResource: 'ember-revisions'
+  host: 'http://leojh.com',
+  resource: '/api/v1/ember-revisions'
 }
 ```
 * `type` - Must be 'REST' to use this adapter
-* `serviceHost` - the root URL for the service
-* `serviceNamespace` - path to the service
-* `serviceIndexVersionResource` - the name of your resource responsible for handling your revisions
+* `host` - the root URL for the service
+* `resource` - the path to the resource responsible for handling your revisions
 
-The combination of config settings will help construct the target URLs for calling your service. For example, given the config above, the `deploy:list` command will result in: `GET http://leojh.com/api/ember-revisions`
+The combination of config settings will help construct the target URLs for calling your service. For example, given the config above, the `deploy:list` command will result in: `GET http://leojh.com/api/v1/ember-revisions`
 
 ## TODOs:
 

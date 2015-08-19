@@ -1,6 +1,6 @@
 {
   "name": "ember-deploy-rest-index",
-  "version": "0.0.8-customerio",
+  "version": "0.1.0-customerio",
   "description": "An index ember-cli-deploy adapter for REST backends",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/leojh/ember-deploy-rest-index",
+  "repository": "https://github.com/customerio/ember-deploy-rest-index",
   "engines": {
     "node": ">= 0.10.0"
   },

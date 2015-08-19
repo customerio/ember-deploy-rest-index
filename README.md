@@ -53,15 +53,21 @@ Sample config in your deploy.js file:
 ```js
 store: {
   type: 'REST',
-  host: 'http://leojh.com',
-  resource: '/api/v1/ember-revisions'
+  host: 'https://leojh.com',
+  resource: '/api/v1/ember-revisions',
+  user: 'deploy',
+  password: 'something-very-secure'
 }
 ```
 * `type` - Must be 'REST' to use this adapter
 * `host` - the root URL for the service
 * `resource` - the path to the resource responsible for handling your revisions
+* `user` - user name for HTTP Basic Auth (optional)
+* `password` - password for HTTP Basic Auth (optional, only used if `user` is set)
 
-The combination of config settings will help construct the target URLs for calling your service. For example, given the config above, the `deploy:list` command will result in: `GET http://leojh.com/api/v1/ember-revisions`
+The combination of config settings will help construct the target URLs for calling your service. For example, given the config above, the `deploy:list` command will result in: `GET https://deploy:something-very-secure@leojh.com/api/v1/ember-revisions`.
+
+Note: don't use Basic Auth with http. In fact, don't use http, just use https.
 
 ## TODOs:
 
